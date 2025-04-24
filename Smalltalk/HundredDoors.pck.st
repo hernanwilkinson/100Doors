@@ -1,12 +1,12 @@
-'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 7:59:12 am'!
-'Description Segundo test. Recorro las puertas quera que estanTodasLasPuertasCerradas no tenga true hardcodeado'!
-!provides: 'HundredDoors' 1 3!
+'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:01:40 am'!
+'Description Refactoring: Borro inst var cantidadDePuertas'!
+!provides: 'HundredDoors' 1 4!
 SystemOrganization addCategory: 'HundredDoors'!
 
 
 !classDefinition: #Portero category: 'HundredDoors'!
 Object subclass: #Portero
-	instanceVariableNames: 'cantidadDePuertas primerPuerta'
+	instanceVariableNames: 'primerPuerta'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'HundredDoors'!
@@ -25,10 +25,8 @@ HundredDoorsTest class
 	instanceVariableNames: ''!
 
 
-!Portero methodsFor: 'initialization' stamp: 'HAW 4/24/2025 07:57:44'!
+!Portero methodsFor: 'initialization' stamp: 'HAW 4/24/2025 08:00:28'!
 initializeDe: unaCantidadDePuertas 
-	
-	cantidadDePuertas := unaCantidadDePuertas.
 	
 	primerPuerta := false! !
 
