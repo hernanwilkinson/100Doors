@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:45:53 am'!
-'Description Hago pasar sexto test... sigo copiando... momento de refactorizar'!
-!provides: 'HundredDoors' 1 15!
+'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:47:56 am'!
+'Description Refactoring: loop para cambiar todas las puertas'!
+!provides: 'HundredDoors' 1 16!
 SystemOrganization addCategory: 'HundredDoors'!
 
 
@@ -66,25 +66,21 @@ puertasCerradas
 	^puertasCerradas
 	! !
 
-!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:45:25'!
+!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:47:36'!
 recorrerPuertas
 	
 	cantidadDePuertas = 1 ifTrue: [ 
-		self cambiarPuerta: 1.
+		1 to: cantidadDePuertas do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ].
 		^self ].
 	
 	cantidadDePuertas = 2 ifTrue: [
-		self cambiarPuerta: 1.
-		self cambiarPuerta: 2.
+		1 to: cantidadDePuertas do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ].
 		
 		self cambiarPuerta: 2.
 		^self ].
 	
 	cantidadDePuertas = 4 ifTrue: [
-		self cambiarPuerta: 1.
-		self cambiarPuerta: 2.
-		self cambiarPuerta: 3.
-		self cambiarPuerta: 4.
+		1 to: cantidadDePuertas do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ].
 		
 		self cambiarPuerta: 2.
 		self cambiarPuerta: 4.
@@ -95,11 +91,7 @@ recorrerPuertas
 		^self ].
 	
 	cantidadDePuertas = 5 ifTrue: [
-		self cambiarPuerta: 1.
-		self cambiarPuerta: 2.
-		self cambiarPuerta: 3.
-		self cambiarPuerta: 4.
-		self cambiarPuerta: 5.
+		1 to: cantidadDePuertas do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ].
 		
 		self cambiarPuerta: 2.
 		self cambiarPuerta: 4.
@@ -112,12 +104,7 @@ recorrerPuertas
 		^self ].
 	
 	cantidadDePuertas = 6 ifTrue: [
-		self cambiarPuerta: 1.
-		self cambiarPuerta: 2.
-		self cambiarPuerta: 3.
-		self cambiarPuerta: 4.
-		self cambiarPuerta: 5.
-		self cambiarPuerta: 6.
+		1 to: cantidadDePuertas do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ].
 		
 		self cambiarPuerta: 2.
 		self cambiarPuerta: 4.
