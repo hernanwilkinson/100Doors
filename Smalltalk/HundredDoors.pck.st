@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 10:14:22 am'!
-'Description Refactoring: Generalización de los ciclos'!
-!provides: 'HundredDoors' 1 26!
+'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 10:16:38 am'!
+'Description Refactoring: Extract method al inner cicle de recorrer las puertas'!
+!provides: 'HundredDoors' 1 27!
 SystemOrganization addCategory: 'HundredDoors'!
 
 
@@ -37,6 +37,14 @@ cambiarPuerta: unNumeroDePuerta
 
 	^ puertas at: unNumeroDePuerta put: (puertas at: unNumeroDePuerta) not! !
 
+!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 10:15:46'!
+cambiarPuertasDesde: unaPuertaInicial cada: unPaso
+
+	unaPuertaInicial 
+		to: cantidadDePuertas 
+		by: unPaso 
+		do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ]! !
+
 !Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:29:56'!
 estanTodasLasPuertasCerradas
 	
@@ -66,14 +74,11 @@ puertasCerradas
 	^puertasCerradas
 	! !
 
-!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 10:09:42'!
+!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 10:15:20'!
 recorrerPuertas
 	
-	1 to: cantidadDePuertas do: [ :puertaInicialYPaso |
-		puertaInicialYPaso 
-			to: cantidadDePuertas 
-			by: puertaInicialYPaso 
-			do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ]].
+	1 to: cantidadDePuertas do: [ :puertaInicialYPaso | 
+		self cambiarPuertasDesde: puertaInicialYPaso cada: puertaInicialYPaso ].
 	
 	! !
 
