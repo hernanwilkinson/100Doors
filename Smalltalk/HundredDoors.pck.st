@@ -1,12 +1,12 @@
-'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 3:31:40 pm'!
-'Description Refactorig: renmobrar tests, borrar otros, dejar de usar todasLasPuertasAbiertas'!
-!provides: 'HundredDoors' 1 29!
+'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 3:46:32 pm'!
+'Description Refactoring: muchos refactorings en Portero'!
+!provides: 'HundredDoors' 1 30!
 SystemOrganization addCategory: 'HundredDoors'!
 
 
 !classDefinition: #Portero category: 'HundredDoors'!
 Object subclass: #Portero
-	instanceVariableNames: 'cantidadDePuertas puertas'
+	instanceVariableNames: 'puertas'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'HundredDoors'!
@@ -25,57 +25,62 @@ HundredDoorsTest class
 	instanceVariableNames: ''!
 
 
-!Portero methodsFor: 'initialization' stamp: 'HAW 4/24/2025 08:30:25'!
-initializeDe: unaCantidadDePuertas 
-	
-	cantidadDePuertas := unaCantidadDePuertas.
-	puertas := (1 to: cantidadDePuertas) collect: [ :numeroDePuerta | false ].
-	! !
+!Portero methodsFor: 'estado de puertas' stamp: 'HAW 4/24/2025 15:44:24'!
+estaAbierta: unNumeroDePuerta
 
-!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:41:12'!
-cambiarPuerta: unNumeroDePuerta
+	^ puertas at: unNumeroDePuerta! !
 
-	^ puertas at: unNumeroDePuerta put: (puertas at: unNumeroDePuerta) not! !
-
-!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 10:15:46'!
-cambiarPuertasDesde: unaPuertaInicial cada: unPaso
-
-	unaPuertaInicial 
-		to: cantidadDePuertas 
-		by: unPaso 
-		do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ]! !
-
-!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:26:30'!
+!Portero methodsFor: 'estado de puertas' stamp: 'HAW 4/24/2025 15:44:45'!
 puertasAbiertas
 	
-	| puertasAbiertas |
-	
-	puertasAbiertas := OrderedCollection new.
-	
-	puertas withIndexDo: [ :puerta :indice | puerta ifTrue: [ puertasAbiertas add: indice ]].
-		
-	^puertasAbiertas
-	! !
+	^self todasLaPuertas select: [ :numeroDePuerta | self estaAbierta: numeroDePuerta ]! !
 
-!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:39:34'!
+!Portero methodsFor: 'estado de puertas' stamp: 'HAW 4/24/2025 15:44:55'!
 puertasCerradas
 	
-	| puertasCerradas |
+	^self todasLaPuertas reject: [ :numeroDePuerta | self estaAbierta: numeroDePuerta ]! !
+
+!Portero methodsFor: 'estado de puertas' stamp: 'HAW 4/24/2025 15:43:43'!
+todasLaPuertas
+
+	^ 1 to: self cantidadDePuertas! !
+
+!Portero methodsFor: 'initialization' stamp: 'HAW 4/24/2025 15:38:03'!
+initializeDe: unaCantidadDePuertas 
 	
-	puertasCerradas := OrderedCollection new.
-	
-	puertas withIndexDo: [ :puerta :indice | puerta ifFalse: [ puertasCerradas add: indice ]].
-		
-	^puertasCerradas
+	puertas := (1 to: unaCantidadDePuertas) collect: [ :numeroDePuerta | false ].
 	! !
 
-!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 10:15:20'!
+!Portero methodsFor: 'recorrer puertas' stamp: 'HAW 4/24/2025 15:46:03'!
 recorrerPuertas
 	
-	1 to: cantidadDePuertas do: [ :puertaInicialYPaso | 
+	self todasLaPuertas do: [ :puertaInicialYPaso | 
+		"paso puertaInicialYPaso en dos parámetros distintos para que quede claro
+		la diferencia de por donde empezar y cada cuanto saltar, por más que los 
+		números son iguale - Hernan"
 		self cambiarPuertasDesde: puertaInicialYPaso cada: puertaInicialYPaso ].
 	
 	! !
+
+!Portero methodsFor: 'recorrer puertas-private' stamp: 'HAW 4/24/2025 15:41:50'!
+cambiarPuerta: unNumeroDePuerta
+
+	"No uso estaAbierta: porque me parece más claro que está cambiando
+	el estado de la puerta así - Hernan"
+	^ puertas at: unNumeroDePuerta put: (puertas at: unNumeroDePuerta) not! !
+
+!Portero methodsFor: 'recorrer puertas-private' stamp: 'HAW 4/24/2025 15:44:05'!
+cambiarPuertasDesde: unNumeroDePuertaInicial cada: unPaso
+
+	unNumeroDePuertaInicial 
+		to: self cantidadDePuertas
+		by: unPaso 
+		do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ]! !
+
+!Portero methodsFor: 'recorrer puertas-private' stamp: 'HAW 4/24/2025 15:42:31'!
+cantidadDePuertas
+
+	^ puertas size! !
 
 !Portero class methodsFor: 'instance creation' stamp: 'HAW 4/24/2025 07:53:20'!
 de: unaCantidadDePuertas 
