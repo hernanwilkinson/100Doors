@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 3:51:58 pm'!
-'Description Test pasa: cantidad de puertas debe ser entero'!
-!provides: 'HundredDoors' 1 33!
+'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 3:53:58 pm'!
+'Description Refactoring: reificar assertions'!
+!provides: 'HundredDoors' 1 34!
 SystemOrganization addCategory: 'HundredDoors'!
 
 
@@ -82,11 +82,10 @@ cantidadDePuertas
 
 	^ puertas size! !
 
-!Portero class methodsFor: 'instance creation' stamp: 'HAW 4/24/2025 15:51:41'!
+!Portero class methodsFor: 'instance creation' stamp: 'HAW 4/24/2025 15:53:40'!
 de: unaCantidadDePuertas 
 
-	unaCantidadDePuertas strictlyPositive ifFalse: [ self error: self cantidadDePuertasDebeSerEstrictamentePositivo ].
-	unaCantidadDePuertas isInteger ifFalse: [ self error: self cantidadDePuertasDebeSerEntero ].
+	self assertEsValida: unaCantidadDePuertas.
 	
 	^self new initializeDe: unaCantidadDePuertas ! !
 
@@ -99,6 +98,22 @@ cantidadDePuertasDebeSerEntero
 cantidadDePuertasDebeSerEstrictamentePositivo
 	
 	^'La cantidad de puertas debe ser estrictamente positivo'! !
+
+!Portero class methodsFor: 'assertions' stamp: 'HAW 4/24/2025 15:53:05'!
+assertEsEntero: unaCantidadDePuertas
+
+	^ unaCantidadDePuertas isInteger ifFalse: [ self error: self cantidadDePuertasDebeSerEntero ]! !
+
+!Portero class methodsFor: 'assertions' stamp: 'HAW 4/24/2025 15:52:48'!
+assertEsEstrictamentePositivo: unaCantidadDePuertas
+
+	^ unaCantidadDePuertas strictlyPositive ifFalse: [ self error: self cantidadDePuertasDebeSerEstrictamentePositivo ]! !
+
+!Portero class methodsFor: 'assertions' stamp: 'HAW 4/24/2025 15:53:40'!
+assertEsValida: unaCantidadDePuertas
+
+	self assertEsEstrictamentePositivo: unaCantidadDePuertas.
+	self assertEsEntero: unaCantidadDePuertas! !
 
 !HundredDoorsTest methodsFor: 'tests' stamp: 'HAW 4/24/2025 15:13:52'!
 test01TodasLasPuertasEmpiezanCerradas
