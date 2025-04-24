@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:13:20 am'!
-'Description Hago pasar el tercer test... muy feo'!
-!provides: 'HundredDoors' 1 6!
+'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:15:06 am'!
+'Description Cuarto test: Uso cuatro puertas porque con tres pasa de entrada'!
+!provides: 'HundredDoors' 1 7!
 SystemOrganization addCategory: 'HundredDoors'!
 
 
@@ -90,4 +90,16 @@ test03
 	portero recorrerPuertas.
 	
 	self assert: portero puertasAbiertas equals: #(1).
+	! !
+
+!HundredDoorsTest methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:14:31'!
+test04
+
+	| portero |
+	
+	portero := Portero de: 4.
+	
+	portero recorrerPuertas.
+	
+	self assert: portero puertasAbiertas equals: #(1 4).
 	! !
