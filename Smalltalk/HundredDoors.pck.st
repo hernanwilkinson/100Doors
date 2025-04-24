@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:35:31 am'!
+'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:37:17 am'!
 'Description Refactoring: Uso estado de puerta anterior en recorrido'!
-!provides: 'HundredDoors' 1 10!
+!provides: 'HundredDoors' 1 11!
 SystemOrganization addCategory: 'HundredDoors'!
 
 
@@ -126,4 +126,17 @@ test04
 	portero recorrerPuertas.
 	
 	self assert: portero puertasAbiertas asArray equals: #(1 4).
+	! !
+
+!HundredDoorsTest methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:36:49'!
+test05
+
+	| portero |
+	
+	portero := Portero de: 5.
+	
+	portero recorrerPuertas.
+	
+	self assert: portero puertasAbiertas asArray equals: #(1 4).
+	self assert: portero puertasCerradas asArray equals: #(2 3 5).
 	! !
