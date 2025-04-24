@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 3:46:32 pm'!
-'Description Refactoring: muchos refactorings en Portero'!
-!provides: 'HundredDoors' 1 30!
+'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 3:49:18 pm'!
+'Description Test: cantidad de puertas debe ser estrictamente positivo (paso 1 y 2)'!
+!provides: 'HundredDoors' 1 31!
 SystemOrganization addCategory: 'HundredDoors'!
 
 
@@ -82,10 +82,17 @@ cantidadDePuertas
 
 	^ puertas size! !
 
-!Portero class methodsFor: 'instance creation' stamp: 'HAW 4/24/2025 07:53:20'!
+!Portero class methodsFor: 'instance creation' stamp: 'HAW 4/24/2025 15:48:48'!
 de: unaCantidadDePuertas 
+
+	unaCantidadDePuertas strictlyPositive ifFalse: [ self error: self cantidadDePuertasDebeSerEstrictamentePositivo ].
 	
 	^self new initializeDe: unaCantidadDePuertas ! !
+
+!Portero class methodsFor: 'mensajes de error' stamp: 'HAW 4/24/2025 15:48:22'!
+cantidadDePuertasDebeSerEstrictamentePositivo
+	
+	^'La cantidad de puertas debe ser estrictamente positivo'! !
 
 !HundredDoorsTest methodsFor: 'tests' stamp: 'HAW 4/24/2025 15:13:52'!
 test01TodasLasPuertasEmpiezanCerradas
@@ -149,3 +156,11 @@ test05FuncionaParaCienPuertas
 	self assert: portero puertasAbiertas asArray equals: cuadradosPerfectos.
 	self assert: portero puertasCerradas asArray equals: puertasAbiertasEsperadas
 	! !
+
+!HundredDoorsTest methodsFor: 'tests' stamp: 'HAW 4/24/2025 15:47:50'!
+test06CantidadDePuertasDebeSerEstrictamentePositivo
+
+	self 
+		should: [ Portero de: 0 ]
+		raise: Error
+		withMessageText: Portero cantidadDePuertasDebeSerEstrictamentePositivo! !
