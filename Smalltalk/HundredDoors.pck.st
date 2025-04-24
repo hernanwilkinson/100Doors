@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:01:40 am'!
-'Description Refactoring: Borro inst var cantidadDePuertas'!
-!provides: 'HundredDoors' 1 4!
+'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:03:46 am'!
+'Description Tercer test: Uso dos puertas'!
+!provides: 'HundredDoors' 1 5!
 SystemOrganization addCategory: 'HundredDoors'!
 
 
@@ -64,3 +64,14 @@ test02
 	portero recorrerPuertas.
 	
 	self deny: portero estanTodasLasPuertasCerradas! !
+
+!HundredDoorsTest methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:03:22'!
+test03
+
+	| portero |
+	
+	portero := Portero de: 2.
+	
+	portero recorrerPuertas.
+	
+	self assert: portero puertasAbiertas equals: #(1)! !
