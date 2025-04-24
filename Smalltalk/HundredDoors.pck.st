@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:44:12 am'!
-'Description Sexto test: pruebo para 6 puertas'!
-!provides: 'HundredDoors' 1 14!
+'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:45:53 am'!
+'Description Hago pasar sexto test... sigo copiando... momento de refactorizar'!
+!provides: 'HundredDoors' 1 15!
 SystemOrganization addCategory: 'HundredDoors'!
 
 
@@ -66,7 +66,7 @@ puertasCerradas
 	^puertasCerradas
 	! !
 
-!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:42:47'!
+!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:45:25'!
 recorrerPuertas
 	
 	cantidadDePuertas = 1 ifTrue: [ 
@@ -111,6 +111,27 @@ recorrerPuertas
 		self cambiarPuerta: 5.
 		^self ].
 	
+	cantidadDePuertas = 6 ifTrue: [
+		self cambiarPuerta: 1.
+		self cambiarPuerta: 2.
+		self cambiarPuerta: 3.
+		self cambiarPuerta: 4.
+		self cambiarPuerta: 5.
+		self cambiarPuerta: 6.
+		
+		self cambiarPuerta: 2.
+		self cambiarPuerta: 4.
+		self cambiarPuerta: 6.
+		
+		self cambiarPuerta: 3.
+		self cambiarPuerta: 6.
+		
+		self cambiarPuerta: 4.
+	
+		self cambiarPuerta: 5.
+		
+		self cambiarPuerta: 6.
+		^self ].
 ! !
 
 !Portero class methodsFor: 'instance creation' stamp: 'HAW 4/24/2025 07:53:20'!
