@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 3:49:18 pm'!
-'Description Test: cantidad de puertas debe ser estrictamente positivo (paso 1 y 2)'!
-!provides: 'HundredDoors' 1 31!
+'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 3:50:24 pm'!
+'Description Test: cantidad de puertas debe ser entero'!
+!provides: 'HundredDoors' 1 32!
 SystemOrganization addCategory: 'HundredDoors'!
 
 
@@ -164,3 +164,11 @@ test06CantidadDePuertasDebeSerEstrictamentePositivo
 		should: [ Portero de: 0 ]
 		raise: Error
 		withMessageText: Portero cantidadDePuertasDebeSerEstrictamentePositivo! !
+
+!HundredDoorsTest methodsFor: 'tests' stamp: 'HAW 4/24/2025 15:50:04'!
+test07CantidadDePuertasDebeSerEntero
+
+	self 
+		should: [ Portero de: 1.1 ]
+		raise: Error
+		withMessageText: Portero cantidadDePuertasDebeSerEntero! !
