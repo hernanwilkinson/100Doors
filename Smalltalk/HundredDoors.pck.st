@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:43:14 am'!
-'Description Refactoring: abstraingo el flip de la puerta en cambiarPuerta:'!
-!provides: 'HundredDoors' 1 13!
+'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:44:12 am'!
+'Description Sexto test: pruebo para 6 puertas'!
+!provides: 'HundredDoors' 1 14!
 SystemOrganization addCategory: 'HundredDoors'!
 
 
@@ -173,4 +173,17 @@ test05
 	
 	self assert: portero puertasAbiertas asArray equals: #(1 4).
 	self assert: portero puertasCerradas asArray equals: #(2 3 5).
+	! !
+
+!HundredDoorsTest methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:43:49'!
+test06
+
+	| portero |
+	
+	portero := Portero de: 6.
+	
+	portero recorrerPuertas.
+	
+	self assert: portero puertasAbiertas asArray equals: #(1 4).
+	self assert: portero puertasCerradas asArray equals: #(2 3 5 6).
 	! !
