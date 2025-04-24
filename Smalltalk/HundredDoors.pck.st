@@ -1,12 +1,12 @@
-'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:15:06 am'!
-'Description Cuarto test: Uso cuatro puertas porque con tres pasa de entrada'!
-!provides: 'HundredDoors' 1 7!
+'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:22:55 am'!
+'Description Paso el 4to test. Todo muy trucho, no me gusta ni para generalizar'!
+!provides: 'HundredDoors' 1 8!
 SystemOrganization addCategory: 'HundredDoors'!
 
 
 !classDefinition: #Portero category: 'HundredDoors'!
 Object subclass: #Portero
-	instanceVariableNames: 'primerPuerta segundaPuerta cantidadDePuertas'
+	instanceVariableNames: 'primerPuerta segundaPuerta cantidadDePuertas tercerPuerta cuartaPuerta'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'HundredDoors'!
@@ -25,34 +25,62 @@ HundredDoorsTest class
 	instanceVariableNames: ''!
 
 
-!Portero methodsFor: 'initialization' stamp: 'HAW 4/24/2025 08:07:51'!
+!Portero methodsFor: 'initialization' stamp: 'HAW 4/24/2025 08:16:49'!
 initializeDe: unaCantidadDePuertas 
 	
 	cantidadDePuertas := unaCantidadDePuertas.
 	
 	primerPuerta := false.
-	segundaPuerta := false! !
+	segundaPuerta := false.
+	tercerPuerta := false.
+	cuartaPuerta := false! !
 
 !Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 07:58:14'!
 estanTodasLasPuertasCerradas
 	
 	^primerPuerta not! !
 
-!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:12:25'!
+!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:22:00'!
 puertasAbiertas
 	
-	^#(1)! !
+	| puertasAbiertas |
+	puertasAbiertas := OrderedCollection new.
+	primerPuerta ifTrue: [ puertasAbiertas add: 1 ].
+	segundaPuerta ifTrue: [ puertasAbiertas add: 2 ].
+	tercerPuerta ifTrue: [ puertasAbiertas add: 3 ].
+	cuartaPuerta ifTrue: [ puertasAbiertas add: 4 ].
+	
+	^puertasAbiertas
+	! !
 
-!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:11:17'!
+!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:19:37'!
 recorrerPuertas
 	
 	cantidadDePuertas = 1 ifTrue: [ 
 		primerPuerta := true.
 		^self ].
 	
-	primerPuerta := true.
-	segundaPuerta := true.
-	segundaPuerta := false.
+	cantidadDePuertas = 2 ifTrue: [
+		primerPuerta := true.
+		segundaPuerta := true.
+		
+		segundaPuerta := false. 
+		^self ].
+	
+	cantidadDePuertas = 4 ifTrue: [
+		primerPuerta := true.
+		segundaPuerta := true.
+		tercerPuerta := true.
+		cuartaPuerta := true.
+		
+		segundaPuerta := false. 
+		cuartaPuerta := false.
+		
+		tercerPuerta := false.
+		
+		cuartaPuerta := true.
+		^self ].
+	
 ! !
 
 !Portero class methodsFor: 'instance creation' stamp: 'HAW 4/24/2025 07:53:20'!
@@ -92,7 +120,7 @@ test03
 	self assert: portero puertasAbiertas equals: #(1).
 	! !
 
-!HundredDoorsTest methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:14:31'!
+!HundredDoorsTest methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:22:20'!
 test04
 
 	| portero |
@@ -101,5 +129,5 @@ test04
 	
 	portero recorrerPuertas.
 	
-	self assert: portero puertasAbiertas equals: #(1 4).
+	self assert: portero puertasAbiertas asArray equals: #(1 4).
 	! !
