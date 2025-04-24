@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:51:34 am'!
-'Description Refactoring: Generalizo 2da pasada'!
-!provides: 'HundredDoors' 1 18!
+'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:52:32 am'!
+'Description Refactoring: Uso misma generalización de 2da pasada cuando son 2 puertas'!
+!provides: 'HundredDoors' 1 19!
 SystemOrganization addCategory: 'HundredDoors'!
 
 
@@ -66,13 +66,13 @@ puertasCerradas
 	^puertasCerradas
 	! !
 
-!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:51:13'!
+!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:51:55'!
 recorrerPuertas
 	
 	1 to: cantidadDePuertas do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ].
 	
 	cantidadDePuertas = 2 ifTrue: [	
-		2 to: cantidadDePuertas do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ].
+		2 to: cantidadDePuertas by: 2 do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ].
 		^self ].
 	
 	cantidadDePuertas = 4 ifTrue: [
