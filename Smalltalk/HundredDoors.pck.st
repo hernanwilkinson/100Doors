@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 7:53:57 am'!
-'Description Hago pasar el primer test'!
-!provides: 'HundredDoors' 1 1!
+'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 7:56:06 am'!
+'Description Segundo test. Recorro las puertas quera que estanTodasLasPuertasCerradas no tenga true hardcodeado'!
+!provides: 'HundredDoors' 1 2!
 SystemOrganization addCategory: 'HundredDoors'!
 
 
@@ -48,3 +48,14 @@ test01
 	portero := Portero de: 1.
 	
 	self assert: portero estanTodasLasPuertasCerradas! !
+
+!HundredDoorsTest methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 07:55:20'!
+test02
+
+	| portero |
+	
+	portero := Portero de: 1.
+	
+	portero recorrerPuertas.
+	
+	self deny: portero estanTodasLasPuertasCerradas! !
