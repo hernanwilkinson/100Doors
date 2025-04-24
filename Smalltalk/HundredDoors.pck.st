@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:55:48 am'!
-'Description Refactoring: Generalizo 3er pasada'!
-!provides: 'HundredDoors' 1 22!
+'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:56:43 am'!
+'Description Refactoring: Saco generalización de 3er pasada de casos especiales'!
+!provides: 'HundredDoors' 1 23!
 SystemOrganization addCategory: 'HundredDoors'!
 
 
@@ -66,29 +66,24 @@ puertasCerradas
 	^puertasCerradas
 	! !
 
-!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:55:32'!
+!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:56:17'!
 recorrerPuertas
 	
 	1 to: cantidadDePuertas do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ].
 	2 to: cantidadDePuertas by: 2 do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ].
+	3 to: cantidadDePuertas by: 3 do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ].
 	
 	cantidadDePuertas = 4 ifTrue: [		
-		3 to: cantidadDePuertas by: 3 do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ].
-		
 		self cambiarPuerta: 4.
 		^self ].
 	
 	cantidadDePuertas = 5 ifTrue: [		
-		3 to: cantidadDePuertas by: 3 do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ].
-		
 		self cambiarPuerta: 4.
 	
 		self cambiarPuerta: 5.
 		^self ].
 	
 	cantidadDePuertas = 6 ifTrue: [		
-		3 to: cantidadDePuertas by: 3 do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ].
-		
 		self cambiarPuerta: 4.
 	
 		self cambiarPuerta: 5.
