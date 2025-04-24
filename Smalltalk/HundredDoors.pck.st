@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:57:50 am'!
-'Description Refactoring: Generalizo todas las pasadas'!
-!provides: 'HundredDoors' 1 24!
+'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 9:06:48 am'!
+'Description Refactoring: Normalizo la generalizacion'!
+!provides: 'HundredDoors' 1 25!
 SystemOrganization addCategory: 'HundredDoors'!
 
 
@@ -66,10 +66,10 @@ puertasCerradas
 	^puertasCerradas
 	! !
 
-!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:57:32'!
+!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 09:06:28'!
 recorrerPuertas
 	
-	1 to: cantidadDePuertas do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ].
+	1 to: cantidadDePuertas by: 1 do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ].
 	2 to: cantidadDePuertas by: 2 do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ].
 	3 to: cantidadDePuertas by: 3 do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ].
 	4 to: cantidadDePuertas by: 4 do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ].
