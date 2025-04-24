@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:37:17 am'!
-'Description Refactoring: Uso estado de puerta anterior en recorrido'!
-!provides: 'HundredDoors' 1 11!
+'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:39:58 am'!
+'Description Paso el quinto test'!
+!provides: 'HundredDoors' 1 12!
 SystemOrganization addCategory: 'HundredDoors'!
 
 
@@ -49,7 +49,19 @@ puertasAbiertas
 	^puertasAbiertas
 	! !
 
-!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:34:53'!
+!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:39:34'!
+puertasCerradas
+	
+	| puertasCerradas |
+	
+	puertasCerradas := OrderedCollection new.
+	
+	puertas withIndexDo: [ :puerta :indice | puerta ifFalse: [ puertasCerradas add: indice ]].
+		
+	^puertasCerradas
+	! !
+
+!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:38:58'!
 recorrerPuertas
 	
 	cantidadDePuertas = 1 ifTrue: [ 
@@ -75,6 +87,23 @@ recorrerPuertas
 		puertas at: 3 put: (puertas at: 3) not.
 		
 		puertas at: 4 put: (puertas at: 4) not.
+		^self ].
+	
+	cantidadDePuertas = 5 ifTrue: [
+		puertas at: 1 put: (puertas at: 1) not.
+		puertas at: 2 put: (puertas at: 2) not.
+		puertas at: 3 put: (puertas at: 3) not.
+		puertas at: 4 put: (puertas at: 4) not.
+		puertas at: 5 put: (puertas at: 5) not.
+		
+		puertas at: 2 put: (puertas at: 2) not.
+		puertas at: 4 put: (puertas at: 4) not.
+		
+		puertas at: 3 put: (puertas at: 3) not.
+		
+		puertas at: 4 put: (puertas at: 4) not.
+		
+		puertas at: 5 put: (puertas at: 5) not.
 		^self ].
 	
 ! !
