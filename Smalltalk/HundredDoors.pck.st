@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:39:58 am'!
-'Description Paso el quinto test'!
-!provides: 'HundredDoors' 1 12!
+'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:43:14 am'!
+'Description Refactoring: abstraingo el flip de la puerta en cambiarPuerta:'!
+!provides: 'HundredDoors' 1 13!
 SystemOrganization addCategory: 'HundredDoors'!
 
 
@@ -32,6 +32,11 @@ initializeDe: unaCantidadDePuertas
 	puertas := (1 to: cantidadDePuertas) collect: [ :numeroDePuerta | false ].
 	! !
 
+!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:41:12'!
+cambiarPuerta: unNumeroDePuerta
+
+	^ puertas at: unNumeroDePuerta put: (puertas at: unNumeroDePuerta) not! !
+
 !Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:29:56'!
 estanTodasLasPuertasCerradas
 	
@@ -61,49 +66,49 @@ puertasCerradas
 	^puertasCerradas
 	! !
 
-!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:38:58'!
+!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:42:47'!
 recorrerPuertas
 	
 	cantidadDePuertas = 1 ifTrue: [ 
-		puertas at: 1 put: (puertas at: 1) not.
+		self cambiarPuerta: 1.
 		^self ].
 	
 	cantidadDePuertas = 2 ifTrue: [
-		puertas at: 1 put: (puertas at: 1) not.
-		puertas at: 2 put: (puertas at: 2) not.
+		self cambiarPuerta: 1.
+		self cambiarPuerta: 2.
 		
-		puertas at: 2 put: (puertas at: 2) not. 
+		self cambiarPuerta: 2.
 		^self ].
 	
 	cantidadDePuertas = 4 ifTrue: [
-		puertas at: 1 put: (puertas at: 1) not.
-		puertas at: 2 put: (puertas at: 2) not.
-		puertas at: 3 put: (puertas at: 3) not.
-		puertas at: 4 put: (puertas at: 4) not.
+		self cambiarPuerta: 1.
+		self cambiarPuerta: 2.
+		self cambiarPuerta: 3.
+		self cambiarPuerta: 4.
 		
-		puertas at: 2 put: (puertas at: 2) not.
-		puertas at: 4 put: (puertas at: 4) not.
+		self cambiarPuerta: 2.
+		self cambiarPuerta: 4.
 		
-		puertas at: 3 put: (puertas at: 3) not.
+		self cambiarPuerta: 3.
 		
-		puertas at: 4 put: (puertas at: 4) not.
+		self cambiarPuerta: 4.
 		^self ].
 	
 	cantidadDePuertas = 5 ifTrue: [
-		puertas at: 1 put: (puertas at: 1) not.
-		puertas at: 2 put: (puertas at: 2) not.
-		puertas at: 3 put: (puertas at: 3) not.
-		puertas at: 4 put: (puertas at: 4) not.
-		puertas at: 5 put: (puertas at: 5) not.
+		self cambiarPuerta: 1.
+		self cambiarPuerta: 2.
+		self cambiarPuerta: 3.
+		self cambiarPuerta: 4.
+		self cambiarPuerta: 5.
 		
-		puertas at: 2 put: (puertas at: 2) not.
-		puertas at: 4 put: (puertas at: 4) not.
+		self cambiarPuerta: 2.
+		self cambiarPuerta: 4.
 		
-		puertas at: 3 put: (puertas at: 3) not.
+		self cambiarPuerta: 3.
 		
-		puertas at: 4 put: (puertas at: 4) not.
-		
-		puertas at: 5 put: (puertas at: 5) not.
+		self cambiarPuerta: 4.
+	
+		self cambiarPuerta: 5.
 		^self ].
 	
 ! !
