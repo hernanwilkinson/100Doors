@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:47:56 am'!
-'Description Refactoring: loop para cambiar todas las puertas'!
-!provides: 'HundredDoors' 1 16!
+'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:49:04 am'!
+'Description Refactoring: siempre cambio el estado de todas las puertas primero'!
+!provides: 'HundredDoors' 1 17!
 SystemOrganization addCategory: 'HundredDoors'!
 
 
@@ -66,22 +66,16 @@ puertasCerradas
 	^puertasCerradas
 	! !
 
-!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:47:36'!
+!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:48:36'!
 recorrerPuertas
 	
-	cantidadDePuertas = 1 ifTrue: [ 
-		1 to: cantidadDePuertas do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ].
-		^self ].
+	1 to: cantidadDePuertas do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ].
 	
-	cantidadDePuertas = 2 ifTrue: [
-		1 to: cantidadDePuertas do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ].
-		
+	cantidadDePuertas = 2 ifTrue: [	
 		self cambiarPuerta: 2.
 		^self ].
 	
 	cantidadDePuertas = 4 ifTrue: [
-		1 to: cantidadDePuertas do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ].
-		
 		self cambiarPuerta: 2.
 		self cambiarPuerta: 4.
 		
@@ -90,9 +84,7 @@ recorrerPuertas
 		self cambiarPuerta: 4.
 		^self ].
 	
-	cantidadDePuertas = 5 ifTrue: [
-		1 to: cantidadDePuertas do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ].
-		
+	cantidadDePuertas = 5 ifTrue: [	
 		self cambiarPuerta: 2.
 		self cambiarPuerta: 4.
 		
@@ -103,9 +95,7 @@ recorrerPuertas
 		self cambiarPuerta: 5.
 		^self ].
 	
-	cantidadDePuertas = 6 ifTrue: [
-		1 to: cantidadDePuertas do: [ :numeroDePuerta | self cambiarPuerta: numeroDePuerta ].
-		
+	cantidadDePuertas = 6 ifTrue: [		
 		self cambiarPuerta: 2.
 		self cambiarPuerta: 4.
 		self cambiarPuerta: 6.
