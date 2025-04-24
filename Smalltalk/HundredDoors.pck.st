@@ -1,12 +1,12 @@
-'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:03:46 am'!
-'Description Tercer test: Uso dos puertas'!
-!provides: 'HundredDoors' 1 5!
+'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 8:13:20 am'!
+'Description Hago pasar el tercer test... muy feo'!
+!provides: 'HundredDoors' 1 6!
 SystemOrganization addCategory: 'HundredDoors'!
 
 
 !classDefinition: #Portero category: 'HundredDoors'!
 Object subclass: #Portero
-	instanceVariableNames: 'primerPuerta'
+	instanceVariableNames: 'primerPuerta segundaPuerta cantidadDePuertas'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'HundredDoors'!
@@ -25,20 +25,35 @@ HundredDoorsTest class
 	instanceVariableNames: ''!
 
 
-!Portero methodsFor: 'initialization' stamp: 'HAW 4/24/2025 08:00:28'!
+!Portero methodsFor: 'initialization' stamp: 'HAW 4/24/2025 08:07:51'!
 initializeDe: unaCantidadDePuertas 
 	
-	primerPuerta := false! !
+	cantidadDePuertas := unaCantidadDePuertas.
+	
+	primerPuerta := false.
+	segundaPuerta := false! !
 
 !Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 07:58:14'!
 estanTodasLasPuertasCerradas
 	
 	^primerPuerta not! !
 
-!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 07:57:26'!
+!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:12:25'!
+puertasAbiertas
+	
+	^#(1)! !
+
+!Portero methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:11:17'!
 recorrerPuertas
 	
-	primerPuerta := true! !
+	cantidadDePuertas = 1 ifTrue: [ 
+		primerPuerta := true.
+		^self ].
+	
+	primerPuerta := true.
+	segundaPuerta := true.
+	segundaPuerta := false.
+! !
 
 !Portero class methodsFor: 'instance creation' stamp: 'HAW 4/24/2025 07:53:20'!
 de: unaCantidadDePuertas 
@@ -65,7 +80,7 @@ test02
 	
 	self deny: portero estanTodasLasPuertasCerradas! !
 
-!HundredDoorsTest methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:03:22'!
+!HundredDoorsTest methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 08:12:59'!
 test03
 
 	| portero |
@@ -74,4 +89,5 @@ test03
 	
 	portero recorrerPuertas.
 	
-	self assert: portero puertasAbiertas equals: #(1)! !
+	self assert: portero puertasAbiertas equals: #(1).
+	! !
