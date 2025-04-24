@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 10:16:38 am'!
-'Description Refactoring: Extract method al inner cicle de recorrer las puertas'!
-!provides: 'HundredDoors' 1 27!
+'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 3:11:42 pm'!
+'Description Test para las 100 puertas, pasa de entrada porque el problema ya está resuelto'!
+!provides: 'HundredDoors' 1 28!
 SystemOrganization addCategory: 'HundredDoors'!
 
 
@@ -155,4 +155,16 @@ test06
 	
 	self assert: portero puertasAbiertas asArray equals: #(1 4).
 	self assert: portero puertasCerradas asArray equals: #(2 3 5 6).
+	! !
+
+!HundredDoorsTest methodsFor: 'as yet unclassified' stamp: 'HAW 4/24/2025 15:11:07'!
+test07
+
+	| portero |
+	
+	portero := Portero de: 100.
+	
+	portero recorrerPuertas.
+	
+	self assert: portero puertasAbiertas asArray equals: {1*1. 2*2. 3*3. 4*4. 5*5. 6*6. 7*7. 8*8. 9*9. 10*10}
 	! !
