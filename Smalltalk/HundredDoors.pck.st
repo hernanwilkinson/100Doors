@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 3:50:24 pm'!
-'Description Test: cantidad de puertas debe ser entero'!
-!provides: 'HundredDoors' 1 32!
+'From Cuis7.3 [latest update: #7095] on 24 April 2025 at 3:51:58 pm'!
+'Description Test pasa: cantidad de puertas debe ser entero'!
+!provides: 'HundredDoors' 1 33!
 SystemOrganization addCategory: 'HundredDoors'!
 
 
@@ -82,12 +82,18 @@ cantidadDePuertas
 
 	^ puertas size! !
 
-!Portero class methodsFor: 'instance creation' stamp: 'HAW 4/24/2025 15:48:48'!
+!Portero class methodsFor: 'instance creation' stamp: 'HAW 4/24/2025 15:51:41'!
 de: unaCantidadDePuertas 
 
 	unaCantidadDePuertas strictlyPositive ifFalse: [ self error: self cantidadDePuertasDebeSerEstrictamentePositivo ].
+	unaCantidadDePuertas isInteger ifFalse: [ self error: self cantidadDePuertasDebeSerEntero ].
 	
 	^self new initializeDe: unaCantidadDePuertas ! !
+
+!Portero class methodsFor: 'mensajes de error' stamp: 'HAW 4/24/2025 15:51:05'!
+cantidadDePuertasDebeSerEntero
+	
+	^'La cantidad de puertas debe ser un número entero'! !
 
 !Portero class methodsFor: 'mensajes de error' stamp: 'HAW 4/24/2025 15:48:22'!
 cantidadDePuertasDebeSerEstrictamentePositivo
